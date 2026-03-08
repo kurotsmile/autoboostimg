@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://autoboostimg.web.app/sitemap.xml
