@@ -160,14 +160,53 @@ canvas, img.preview, svg {
   main, header { padding: 16px; }
 }</style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"AutoBoostIMG","description":"Enhance dull photos in one click using automatic level and contrast boost.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","url":"https://autoboostimg.web.app"}</script>
+<style id="round2-style">
+body.theme-shell::before, body.theme-shell::after {
+  content:"";
+  position:fixed;
+  z-index:-1;
+  width:320px;
+  height:320px;
+  border-radius:59% 41% 35% 65% / 47% 55% 45% 53%;
+  background:linear-gradient(142deg, #00b09b22, #ff6f6122);
+  filter: blur(1px);
+}
+body.theme-shell::before { top:-90px; right:-90px; }
+body.theme-shell::after { bottom:-110px; left:-110px; }
+.tool-ribbon {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 12px;
+  margin:0 0 12px;
+  border:1px solid color-mix(in srgb, #00b09b 32%, #ffffff);
+  background:linear-gradient(120deg, #00b09b14, #ff6f6110);
+  border-radius:12px;
+  font-weight:700;
+  letter-spacing:.2px;
+}
+.ribbon-ic {
+  width:18px;
+  height:18px;
+  stroke:color-mix(in srgb, #00b09b 65%, #102030);
+  fill:none;
+  stroke-width:1.9;
+}
+header h1 { position: relative; z-index: 1; }
+header .sub { position: relative; z-index: 1; }
+main { position: relative; overflow: visible; }
+button { min-height: 42px; }
+.theme-shell main{background:linear-gradient(180deg,#fff, #fbfdff)}.theme-shell .tool-ribbon{box-shadow:0 10px 20px rgba(0,0,0,.08)}
+</style>
 </head>
-<body>
+<body class="theme-shell">
   <div class="container">
     <header>
       <h1>Auto Enhance 1-Click</h1>
       <p class="sub">Enhance dull photos in one click using automatic level and contrast boost.</p>
     </header>
     <main>
+      <div class="tool-ribbon"><svg viewBox="0 0 24 24" class="ribbon-ic"><path d="M12 3l2.6 5.3 5.9.9-4.2 4.1 1 5.8-5.3-2.8-5.3 2.8 1-5.8-4.2-4.1 5.9-.9z"/></svg><span>Auto Improvement Engine</span></div>
       <input id="img" type="file" accept="image/*">
     <div style="margin-top:10px" class="grid two"><button id="enhance">Auto Enhance</button><button id="save">Download</button></div>
     <canvas id="cv" width="900" height="600" style="margin-top:10px"></canvas>
