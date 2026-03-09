@@ -1,69 +1,705 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>AutoBoostIMG | Auto Enhance 1-Click</title><meta name="description" content="Enhance dull photos in one click using automatic level and contrast boost."><meta name="keywords" content="auto enhance photo,one click image enhancement,photo improve"><meta name="author" content="Tran Thien Thanh"><meta name="robots" content="index,follow,max-image-preview:large"><meta property="og:type" content="website"><meta property="og:title" content="AutoBoostIMG - Auto Enhance 1-Click"><meta property="og:description" content="Enhance dull photos in one click using automatic level and contrast boost."><meta property="og:url" content="https://autoboostimg.web.app"><meta property="og:image" content="https://autoboostimg.web.app/favicon.svg"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="AutoBoostIMG - Auto Enhance 1-Click"><meta name="twitter:description" content="Enhance dull photos in one click using automatic level and contrast boost."><link rel="canonical" href="https://autoboostimg.web.app/"><link rel="icon" type="image/svg+xml" href="favicon.svg"><style>:root{--w:1130px;--r:21px;--font:"Avenir Next","Segoe UI",sans-serif;--bg:#f5fdff;--card:#fff;--text:#16343f;--muted:#577783;--line:#d3eaf2;--g1:#00ad98;--g2:#ff6b60;--shadow:0 16px 34px rgba(22,61,72,.13)}
-*{box-sizing:border-box}
-body{margin:0;color:var(--text);font-family:var(--font);background:var(--bg)}
-.page{max-width:var(--w);margin:0 auto;padding:24px 16px 36px}
-.tool-shell{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px;box-shadow:var(--shadow)}
-label{display:block;margin-bottom:6px;font-weight:700}
-input,select,textarea,button{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;font:inherit}
-textarea{min-height:130px;resize:vertical}
-button{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:none;background:linear-gradient(125deg,var(--g1),var(--g2));color:#fff;font-weight:700;cursor:pointer}
-button:hover{filter:brightness(1.05)}
-.btn-ic{width:14px;height:14px;stroke:currentColor;stroke-width:2;fill:none}
-.grid{display:grid;gap:12px}
-.grid.two{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
-.output,.panel{border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff}
-canvas,img.preview,svg{max-width:100%;border-radius:12px;border:1px solid var(--line);background:#fff}
-.swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px}
-.swatch{border:1px solid var(--line);border-radius:12px;overflow:hidden;cursor:pointer}
-.swatch div{height:68px}
-.swatch code{display:block;text-align:center;padding:8px;background:#fff}
-.note{color:var(--muted)}
-.site-footer{margin-top:20px;background:#10243a;color:#dce8f8;border:1px solid #1e3e61;border-radius:14px;padding:16px;display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
-.site-footer h3{margin:0 0 8px;color:#fff}
-.site-footer p{margin:5px 0;word-break:break-word}
-.site-footer a{color:#92cfff}
-@media (max-width:720px){.page{padding:14px 10px 24px}.tool-shell{padding:14px}}
-.hero{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:16px;box-shadow:0 20px 40px color-mix(in srgb,var(--g1) 22%, transparent)} .hero strong{color:var(--g1)}</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"AutoBoostIMG","description":"Enhance dull photos in one click using automatic level and contrast boost.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","url":"https://autoboostimg.web.app"}</script></head><body><div class="page"><section class="hero"><h1>Auto Enhance 1-Click</h1><p><strong>One click.</strong> Enhance dull photos in one click using automatic level and contrast boost.</p></section><section class="tool-shell"><input id="img" type="file" accept="image/*"><div style="margin-top:10px" class="grid two"><button id="enhance">Auto Enhance</button><button id="save">Download</button></div><canvas id="cv" width="900" height="600" style="margin-top:10px"></canvas></section>
-<footer class="site-footer">
-  <div>
-    <h3>Contact</h3>
-    <p>Email: <a href="mailto:tranthienthanh93@gmail.com">tranthienthanh93@gmail.com</a></p>
-    <p>Web: <a href="https://carrotstore.web.app" target="_blank" rel="noopener">carrotstore.web.app</a></p>
-    <p>Phone: <a href="tel:+84978651577">+84978651577</a></p>
-    <p>Tiktok: <a href="https://www.tiktok.com/@kurotsmilethanh" target="_blank" rel="noopener">@kurotsmilethanh</a></p>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AutoBoostIMG | Smart Photo Enhancer</title>
+  <meta name="description" content="Enhance dull photos in one click with smart auto level and contrast balancing." />
+  <meta name="keywords" content="auto enhance photo, one click image enhancement, improve image quality" />
+  <meta name="author" content="Tran Thien Thanh" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="AutoBoostIMG - Smart Photo Enhancer" />
+  <meta property="og:description" content="Enhance dull photos in one click with smart auto level and contrast balancing." />
+  <meta property="og:url" content="https://autoboostimg.web.app" />
+  <meta property="og:image" content="https://autoboostimg.web.app/favicon.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AutoBoostIMG - Smart Photo Enhancer" />
+  <meta name="twitter:description" content="Enhance dull photos in one click with smart auto level and contrast balancing." />
+  <link rel="canonical" href="https://autoboostimg.web.app/" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <script>(function(s){s.dataset.zone='10702134',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+
+  <style>
+    :root {
+      --font: "Manrope", "Segoe UI", sans-serif;
+      --bg-1: #f2f8ff;
+      --bg-2: #eefaf6;
+      --surface: #ffffff;
+      --text: #13263a;
+      --muted: #5b7086;
+      --line: #d7e3f2;
+      --brand: #0f8a6e;
+      --brand-2: #1f65d8;
+      --brand-soft: #e8f7f2;
+      --danger: #c43838;
+      --shadow-lg: 0 22px 60px rgba(15, 44, 77, 0.16);
+      --shadow-md: 0 12px 28px rgba(16, 48, 84, 0.12);
+      --radius-xl: 24px;
+      --radius-lg: 16px;
+      --radius-sm: 12px;
+      --max-w: 1160px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font);
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, #d9ecff 0%, transparent 42%),
+        radial-gradient(circle at 92% 0%, #ddf9ec 0%, transparent 38%),
+        linear-gradient(160deg, var(--bg-1), var(--bg-2));
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 26px 16px 34px;
+    }
+
+    .hero {
+      background: linear-gradient(130deg, #0f2c4a 0%, #164f77 48%, #0f8a6e 100%);
+      border-radius: var(--radius-xl);
+      color: #fff;
+      padding: 24px;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+      animation: rise 500ms ease;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: -40px -80px auto auto;
+      width: 260px;
+      height: 260px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0) 70%);
+      pointer-events: none;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      margin: 10px 0 0;
+      max-width: 760px;
+      color: #dceeff;
+      font-size: clamp(14px, 1.8vw, 18px);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 330px;
+      gap: 16px;
+      margin-top: 16px;
+      align-items: start;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+    }
+
+    .main-card {
+      padding: 14px;
+      animation: rise 650ms ease;
+    }
+
+    .dropzone {
+      display: block;
+      width: 100%;
+      border: 1.5px dashed #8fb3da;
+      border-radius: var(--radius-sm);
+      padding: 18px;
+      text-align: center;
+      color: var(--muted);
+      background: linear-gradient(180deg, #f8fbff, #f3f9ff);
+      transition: 180ms ease;
+      cursor: pointer;
+    }
+
+    .dropzone:hover,
+    .dropzone.dragover {
+      border-color: var(--brand-2);
+      background: #edf4ff;
+      transform: translateY(-1px);
+    }
+
+    .dropzone strong {
+      color: var(--text);
+      display: block;
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+
+    .controls {
+      margin-top: 12px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .control {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: #fff;
+      padding: 10px;
+    }
+
+    .control label {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .control input[type="range"] {
+      width: 100%;
+      display: block;
+      margin: 0;
+      accent-color: #1f65d8;
+    }
+
+    .actions {
+      margin-top: 12px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .actions button {
+      flex: 1 1 170px;
+      justify-content: center;
+      min-height: 42px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 11px;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 10px 14px;
+      transition: 180ms ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      color: #fff;
+      background: linear-gradient(120deg, var(--brand), var(--brand-2));
+    }
+
+    .btn-soft {
+      color: #123;
+      background: #eaf2ff;
+      border: 1px solid #d2e1f7;
+    }
+
+    .btn-outline {
+      color: #1c4f7d;
+      background: #fff;
+      border: 1px solid #b7d1ef;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.03);
+    }
+
+    button:disabled {
+      opacity: 0.48;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .preview-shell {
+      margin-top: 12px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--line);
+      overflow: hidden;
+      background: #f6fbff;
+    }
+
+    .preview-head {
+      padding: 8px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--muted);
+      background: #fff;
+    }
+
+    .toggle-group {
+      display: inline-flex;
+      border-radius: 999px;
+      border: 1px solid #bfd4ee;
+      padding: 2px;
+      background: #edf4ff;
+    }
+
+    .toggle-group button {
+      flex: 0 0 auto;
+      border: 0;
+      border-radius: 999px;
+      padding: 5px 10px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #355c80;
+      background: transparent;
+    }
+
+    .toggle-group button.active {
+      color: #fff;
+      background: linear-gradient(120deg, #1d63d3, #0f8a6e);
+    }
+
+    canvas {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 68vh;
+      background: repeating-conic-gradient(#eef5ff 0% 25%, #f8fbff 0% 50%) 50% / 14px 14px;
+    }
+
+    .status {
+      margin-top: 10px;
+      font-size: 13px;
+      color: var(--muted);
+      min-height: 18px;
+    }
+
+    .status.error {
+      color: var(--danger);
+      font-weight: 600;
+    }
+
+    .side-card {
+      padding: 14px;
+      animation: rise 760ms ease;
+    }
+
+    .side-card h2 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .check-list {
+      margin: 10px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 8px;
+      color: #35506b;
+      font-size: 14px;
+    }
+
+    .check-list li {
+      padding-left: 20px;
+      position: relative;
+      line-height: 1.4;
+    }
+
+    .check-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 7px;
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(120deg, var(--brand-2), var(--brand));
+      box-shadow: 0 0 0 3px rgba(20, 110, 192, 0.12);
+    }
+
+    .meta {
+      margin-top: 14px;
+      padding: 12px;
+      border-radius: var(--radius-sm);
+      background: var(--brand-soft);
+      border: 1px solid #caebdf;
+      font-size: 13px;
+      color: #255949;
+      word-break: break-word;
+    }
+
+    .site-footer {
+      margin-top: 16px;
+      border-radius: var(--radius-lg);
+      border: 1px solid #1c3b62;
+      background: linear-gradient(160deg, #0d2237, #16395a);
+      color: #dce9fb;
+      padding: 16px;
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .site-footer h3 {
+      margin: 0 0 8px;
+      color: #fff;
+      font-size: 16px;
+    }
+
+    .site-footer p {
+      margin: 5px 0;
+      font-size: 14px;
+    }
+
+    .site-footer a {
+      color: #9fd2ff;
+      text-underline-offset: 3px;
+    }
+
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 1020px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .side-card {
+        order: -1;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .page {
+        padding: 14px 10px 22px;
+      }
+
+      .hero {
+        border-radius: 20px;
+        padding: 18px;
+      }
+
+      .controls {
+        grid-template-columns: 1fr;
+      }
+
+      .actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .actions button {
+        min-width: 0;
+        justify-content: center;
+      }
+    }
+  </style>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "AutoBoostIMG",
+      "description": "Enhance dull photos in one click using automatic level and contrast boost.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "url": "https://autoboostimg.web.app"
+    }
+  </script>
+</head>
+<body>
+  <div class="page">
+    <section class="hero">
+      <h1>Smart Photo Enhancement</h1>
+      <p>Upload an image, tune enhancement intensity, and export a cleaner result in seconds. Everything is processed directly in your browser.</p>
+    </section>
+
+    <main class="layout">
+      <section class="card main-card" aria-label="Image enhancer">
+        <label class="dropzone" id="dropzone">
+          <strong>Drop image here or click to upload</strong>
+          <span>PNG, JPG, WEBP supported</span>
+        </label>
+        <input id="img-input" type="file" accept="image/*" hidden />
+
+        <div class="controls">
+          <div class="control">
+            <label for="intensity">Intensity <span id="intensity-value">108%</span></label>
+            <input id="intensity" type="range" min="90" max="150" step="1" value="108" />
+          </div>
+          <div class="control">
+            <label for="contrast">Contrast <span id="contrast-value">100%</span></label>
+            <input id="contrast" type="range" min="90" max="140" step="1" value="100" />
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="enhance-btn" class="btn-primary" disabled>Enhance Now</button>
+          <button id="download-btn" class="btn-soft" disabled>Download JPG</button>
+          <button id="reset-btn" class="btn-outline" disabled>Reset</button>
+        </div>
+
+        <div class="preview-shell">
+          <div class="preview-head">
+            <span id="preview-label">Preview</span>
+            <div class="toggle-group" role="tablist" aria-label="Preview mode">
+              <button id="view-original" class="active" type="button">Original</button>
+              <button id="view-enhanced" type="button">Enhanced</button>
+            </div>
+          </div>
+          <canvas id="preview-canvas" width="1280" height="720"></canvas>
+        </div>
+
+        <div id="status" class="status">Ready. Upload an image to begin.</div>
+      </section>
+
+      <aside class="card side-card">
+        <h2>Why this tool</h2>
+        <ul class="check-list">
+          <li>Fast one-click correction for flat or low-contrast images.</li>
+          <li>Works locally in browser without server-side processing.</li>
+          <li>Simple controls with consistent visual feedback.</li>
+          <li>Export optimized JPG for sharing and publishing.</li>
+        </ul>
+        <div class="meta">
+          <strong>Tip:</strong> Start at default values, then increase intensity only if highlights still look dull.
+        </div>
+      </aside>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <h3>Contact</h3>
+        <p>Email: <a href="mailto:tranthienthanh93@gmail.com">tranthienthanh93@gmail.com</a></p>
+        <p>Web: <a href="https://carrotstore.web.app" target="_blank" rel="noopener">carrotstore.web.app</a></p>
+        <p>Phone: <a href="tel:+84978651577">+84978651577</a></p>
+        <p>Tiktok: <a href="https://www.tiktok.com/@kurotsmilethanh" target="_blank" rel="noopener">@kurotsmilethanh</a></p>
+      </div>
+      <div>
+        <h3>Donation</h3>
+        <p>PayPal: <a href="https://www.paypal.com/paypalme/kurotsmile" target="_blank" rel="noopener">paypal.me/kurotsmile</a></p>
+        <p>Ko-fi: <a href="https://ko-fi.com/T6T210E258" target="_blank" rel="noopener">ko-fi.com/T6T210E258</a></p>
+      </div>
+    </footer>
   </div>
-  <div>
-    <h3>Donation</h3>
-    <p>PayPal: <a href="https://www.paypal.com/paypalme/kurotsmile" target="_blank" rel="noopener">https://www.paypal.com/paypalme/kurotsmile</a></p>
-    <p>Buy us a Coffee on Ko-fi: <a href="https://ko-fi.com/T6T210E258" target="_blank" rel="noopener">https://ko-fi.com/T6T210E258</a></p>
-  </div>
-</footer></div><script>let im=null; const cv=document.getElementById('cv'),ctx=cv.getContext('2d'); document.getElementById('img').onchange=async e=>{ const f=e.target.files[0]; if(!f) return; im=new Image(); im.src=URL.createObjectURL(f); await im.decode(); cv.width=im.width; cv.height=im.height; ctx.drawImage(im,0,0); }; function autoEnhance(){ if(!im) return; ctx.drawImage(im,0,0); const id=ctx.getImageData(0,0,cv.width,cv.height),d=id.data; let min=255,max=0; for(let i=0;i<d.length;i+=4){ const y=0.299*d[i]+0.587*d[i+1]+0.114*d[i+2]; if(y<min) min=y; if(y>max) max=y; } const scale=255/Math.max(1,max-min); for(let i=0;i<d.length;i+=4){ for(let c=0;c<3;c++){ let v=(d[i+c]-min)*scale; v=(v-128)*1.08+128; d[i+c]=Math.max(0,Math.min(255,v)); } } ctx.putImageData(id,0,0); } document.getElementById('enhance').onclick=autoEnhance; document.getElementById('save').onclick=()=>{ const a=document.createElement('a'); a.href=cv.toDataURL('image/jpeg',0.92); a.download='auto-enhanced.jpg'; a.click();};</script><script>(function(){
-  const icons = {
-    make:'<svg class="btn-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>',
-    download:'<svg class="btn-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 21h16"/></svg>',
-    convert:'<svg class="btn-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h13"/><path d="M13 3l4 4-4 4"/><path d="M20 17H7"/><path d="M11 13l-4 4 4 4"/></svg>',
-    apply:'<svg class="btn-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>',
-    copy:'<svg class="btn-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><rect x="4" y="4" width="11" height="11" rx="2"/></svg>',
-    random:'<svg class="btn-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 3h5v5"/><path d="M4 20L21 3"/><path d="M16 21h5v-5"/><path d="M4 4l7 7"/></svg>',
-    start:'<svg class="btn-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>',
-    scan:'<svg class="btn-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7V4h3M20 7V4h-3M4 17v3h3M20 17v3h-3"/><rect x="7" y="7" width="10" height="10" rx="2"/></svg>'
-  };
-  const choose = (txt) => {
-    const t = txt.toLowerCase();
-    if (t.includes('download') || t.includes('save')) return icons.download;
-    if (t.includes('convert')) return icons.convert;
-    if (t.includes('apply') || t.includes('enhance') || t.includes('detect')) return icons.apply;
-    if (t.includes('copy') || t.includes('extract')) return icons.copy;
-    if (t.includes('random')) return icons.random;
-    if (t.includes('start')) return icons.start;
-    if (t.includes('scan')) return icons.scan;
-    if (t.includes('generate') || t.includes('create') || t.includes('build') || t.includes('update')) return icons.make;
-    return icons.make;
-  };
-  document.querySelectorAll('button').forEach((btn) => {
-    const text = btn.textContent.trim();
-    if (!text || btn.dataset.iconized === '1') return;
-    btn.innerHTML = choose(text) + '<span>' + text + '</span>';
-    btn.dataset.iconized = '1';
-  });
-})();</script></body></html>
+
+  <script>
+    const input = document.getElementById("img-input");
+    const dropzone = document.getElementById("dropzone");
+    const canvas = document.getElementById("preview-canvas");
+    const ctx = canvas.getContext("2d", { willReadFrequently: true });
+    const enhanceBtn = document.getElementById("enhance-btn");
+    const downloadBtn = document.getElementById("download-btn");
+    const resetBtn = document.getElementById("reset-btn");
+    const statusEl = document.getElementById("status");
+    const previewLabel = document.getElementById("preview-label");
+
+    const intensityEl = document.getElementById("intensity");
+    const contrastEl = document.getElementById("contrast");
+    const intensityValue = document.getElementById("intensity-value");
+    const contrastValue = document.getElementById("contrast-value");
+
+    const viewOriginalBtn = document.getElementById("view-original");
+    const viewEnhancedBtn = document.getElementById("view-enhanced");
+
+    let imageBitmap = null;
+    let originalPixels = null;
+    let enhancedPixels = null;
+    let currentView = "original";
+
+    function setStatus(text, isError = false) {
+      statusEl.textContent = text;
+      statusEl.classList.toggle("error", isError);
+    }
+
+    function setView(view) {
+      currentView = view;
+      viewOriginalBtn.classList.toggle("active", view === "original");
+      viewEnhancedBtn.classList.toggle("active", view === "enhanced");
+      previewLabel.textContent = view === "enhanced" ? "Preview - Enhanced" : "Preview - Original";
+      renderCurrentView();
+    }
+
+    function updateSliderLabels() {
+      intensityValue.textContent = `${intensityEl.value}%`;
+      contrastValue.textContent = `${contrastEl.value}%`;
+    }
+
+    function drawBaseImage(bitmap) {
+      canvas.width = bitmap.width;
+      canvas.height = bitmap.height;
+      ctx.drawImage(bitmap, 0, 0);
+      originalPixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      enhancedPixels = null;
+      setView("original");
+      enhanceBtn.disabled = false;
+      resetBtn.disabled = false;
+      downloadBtn.disabled = true;
+    }
+
+    function renderCurrentView() {
+      if (!originalPixels) {
+        return;
+      }
+      if (currentView === "enhanced" && enhancedPixels) {
+        ctx.putImageData(enhancedPixels, 0, 0);
+      } else {
+        ctx.putImageData(originalPixels, 0, 0);
+      }
+    }
+
+    async function loadImageFile(file) {
+      if (!file || !file.type.startsWith("image/")) {
+        setStatus("Please select a valid image file.", true);
+        return;
+      }
+      try {
+        setStatus("Loading image...");
+        const url = URL.createObjectURL(file);
+        const img = new Image();
+        img.src = url;
+        await img.decode();
+        if (imageBitmap && imageBitmap.close) {
+          imageBitmap.close();
+        }
+        imageBitmap = await createImageBitmap(img);
+        drawBaseImage(imageBitmap);
+        URL.revokeObjectURL(url);
+        setStatus(`Loaded: ${file.name} (${imageBitmap.width}x${imageBitmap.height})`);
+      } catch (_err) {
+        setStatus("Failed to load image. Try another file.", true);
+      }
+    }
+
+    function enhanceImage() {
+      if (!originalPixels) {
+        return;
+      }
+      setStatus("Enhancing image...");
+
+      const data = new Uint8ClampedArray(originalPixels.data);
+      let minLum = 255;
+      let maxLum = 0;
+
+      for (let i = 0; i < data.length; i += 4) {
+        const lum = (0.299 * data[i]) + (0.587 * data[i + 1]) + (0.114 * data[i + 2]);
+        if (lum < minLum) minLum = lum;
+        if (lum > maxLum) maxLum = lum;
+      }
+
+      const stretch = 255 / Math.max(1, maxLum - minLum);
+      const intensity = Number(intensityEl.value) / 100;
+      const contrastBoost = Number(contrastEl.value) / 100;
+
+      for (let i = 0; i < data.length; i += 4) {
+        for (let channel = 0; channel < 3; channel += 1) {
+          let value = (data[i + channel] - minLum) * stretch;
+          value = ((value - 128) * contrastBoost) + 128;
+          value = ((value - 128) * intensity) + 128;
+          data[i + channel] = Math.max(0, Math.min(255, value));
+        }
+      }
+
+      enhancedPixels = new ImageData(data, originalPixels.width, originalPixels.height);
+      setView("enhanced");
+      downloadBtn.disabled = false;
+      setStatus("Enhancement complete. Review and download when ready.");
+    }
+
+    function downloadImage() {
+      if (!enhancedPixels) {
+        setStatus("Please enhance the image before downloading.", true);
+        return;
+      }
+      const exportCanvas = document.createElement("canvas");
+      exportCanvas.width = canvas.width;
+      exportCanvas.height = canvas.height;
+      exportCanvas.getContext("2d").putImageData(enhancedPixels, 0, 0);
+
+      const link = document.createElement("a");
+      link.href = exportCanvas.toDataURL("image/jpeg", 0.92);
+      link.download = "auto-enhanced.jpg";
+      link.click();
+      setStatus("Downloaded: auto-enhanced.jpg");
+    }
+
+    function resetAll() {
+      if (!originalPixels) {
+        return;
+      }
+      enhancedPixels = null;
+      setView("original");
+      downloadBtn.disabled = true;
+      setStatus("Reset to original preview.");
+    }
+
+    dropzone.addEventListener("click", (event) => {
+      event.preventDefault();
+      input.click();
+    });
+    input.addEventListener("change", (event) => {
+      const file = event.target.files && event.target.files[0];
+      if (file) {
+        loadImageFile(file);
+      }
+    });
+
+    ["dragenter", "dragover"].forEach((evt) => {
+      dropzone.addEventListener(evt, (event) => {
+        event.preventDefault();
+        dropzone.classList.add("dragover");
+      });
+    });
+
+    ["dragleave", "drop"].forEach((evt) => {
+      dropzone.addEventListener(evt, (event) => {
+        event.preventDefault();
+        dropzone.classList.remove("dragover");
+      });
+    });
+
+    dropzone.addEventListener("drop", (event) => {
+      const file = event.dataTransfer && event.dataTransfer.files && event.dataTransfer.files[0];
+      if (file) {
+        loadImageFile(file);
+      }
+    });
+
+    enhanceBtn.addEventListener("click", enhanceImage);
+    downloadBtn.addEventListener("click", downloadImage);
+    resetBtn.addEventListener("click", resetAll);
+    viewOriginalBtn.addEventListener("click", () => setView("original"));
+    viewEnhancedBtn.addEventListener("click", () => setView("enhanced"));
+    intensityEl.addEventListener("input", updateSliderLabels);
+    contrastEl.addEventListener("input", updateSliderLabels);
+
+    updateSliderLabels();
+  </script>
+</body>
+</html>
+
